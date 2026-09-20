@@ -1,0 +1,114 @@
+:root {
+  --osprey-blue: #0A233F;
+  --osprey-gray: #A7A8A9;
+  --unf-aqua: #00B2E2;
+  --pale-aqua: #EAF8FC;
+  --page-bg: #F4F6F8;
+}
+
+body {
+  background: var(--page-bg);
+  color: #172B3A;
+}
+
+.navbar {
+  background: var(--osprey-blue) !important;
+}
+
+.navbar-brand, .navbar .nav-link {
+  color: #fff !important;
+}
+
+.brand-title {
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+
+.page-heading, .section-intro {
+  max-width: 1100px;
+  margin: 1.5rem auto 1rem;
+}
+
+.page-heading h2, .section-intro h2 {
+  color: var(--osprey-blue);
+  font-weight: 750;
+}
+
+.portfolio-card {
+  max-width: 1100px;
+  margin: 0 auto 1.25rem;
+  border: 0;
+  border-left: 5px solid var(--unf-aqua);
+  box-shadow: 0 2px 12px rgba(10, 35, 63, .08);
+}
+
+.card-header {
+  background: #fff;
+  color: var(--osprey-blue);
+  font-weight: 700;
+}
+
+.rule-help {
+  background: var(--pale-aqua);
+  border-radius: .5rem;
+  margin-bottom: 1rem;
+  padding: .8rem 1rem;
+}
+
+.area-summary, .report-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 1rem auto 2rem;
+}
+
+.area-summary > div, .report-result {
+  background: #fff;
+  border-radius: .65rem;
+  padding: 1.1rem;
+  box-shadow: 0 2px 12px rgba(10, 35, 63, .08);
+}
+
+.summary-number {
+  color: var(--osprey-blue);
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.summary-rating {
+  color: var(--osprey-blue);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.status-good { color: #227447; font-weight: 700; }
+.status-warning { color: #9A5A00; font-weight: 700; }
+
+.success-panel, .warning-panel, .access-error, .loading-screen {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: .65rem;
+  box-shadow: 0 2px 12px rgba(10, 35, 63, .1);
+}
+
+.success-panel { border-left: 6px solid #2E8B57; }
+.warning-panel { border-left: 6px solid #D18B00; }
+.access-error { border-left: 6px solid #A33A3A; }
+
+.btn-primary {
+  background: var(--osprey-blue);
+  border-color: var(--osprey-blue);
+}
+
+.btn-primary:hover {
+  background: #123B66;
+  border-color: #123B66;
+}
+
+@media (max-width: 800px) {
+  .area-summary, .report-grid { grid-template-columns: 1fr; }
+  .portfolio-card, .page-heading, .section-intro { margin-left: .6rem; margin-right: .6rem; }
+}
