@@ -1,0 +1,16 @@
+Package: PBSciFacultyEvaluation
+Type: Shiny
+Title: PBSci Annual Self Evaluation Portfolio
+Version: 0.1.0
+Description: A calculation and reporting tool for faculty teaching, research, and service annual self evaluations backed by Supabase.
+Authors@R: person("PBSci", "Department", role = c("aut", "cre"), email = "noreply@example.invalid")
+License: MIT
+Encoding: UTF-8
+Imports:
+    shiny,
+    bslib,
+    DT,
+    httr2,
+    jsonlite,
+    officer,
+    flextable

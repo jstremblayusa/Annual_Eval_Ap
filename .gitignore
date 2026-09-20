@@ -1,0 +1,9 @@
+.Renviron
+.Rhistory
+.Rproj.user/
+rsconnect/
+*.zip
+faculty_roster_seed.sql
+faculty_roster.csv
+faculty_access_links.csv
+private_setup/
