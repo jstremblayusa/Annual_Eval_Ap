@@ -32,7 +32,18 @@ sb_request <- function(path, token, method = "GET", body = NULL,
   }
   text <- resp_body_string(resp)
   if (!nzchar(text)) return(invisible(NULL))
-  fromJSON(text, simplifyDataFrame = TRUE)
+  parsed <- fromJSON(text, simplifyDataFrame = TRUE)
+
+  # PostgREST represents a successful query with no matching rows as `[]`.
+  # jsonlite converts that response to an empty list, which has no nrow()
+  # value and can therefore cause `if (nrow(x))` to fail.  Normalize every
+  # empty array to a zero-row data frame so downstream code can treat empty
+  # tables consistently.
+  if (is.list(parsed) && !is.data.frame(parsed) && length(parsed) == 0) {
+    return(data.frame())
+  }
+
+  parsed
 }
 
 sb_get <- function(table, token, query = list()) {
@@ -74,7 +85,9 @@ load_profile <- function(token) {
     list(select = "faculty_id,n_number,first_name,formal_first_name,last_name,position,email,system_role,active",
          active = "eq.true")
   )
-  if (!nrow(result)) stop("This access link is invalid or has been revoked.")
+  if (!is.data.frame(result) || nrow(result) == 0) {
+    stop("This access link is invalid or has been revoked.")
+  }
   if (any(result$system_role == "admin")) {
     result[result$system_role == "admin", , drop = FALSE][1, ]
   } else {
